@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Divina Óculos</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            background-color: #f0f4ff;
+            font-family: 'Arial', sans-serif;
+            color: #333;
+        }
+
+        header {
+            background: linear-gradient(135deg, #1a237e, #1565c0);
+            padding: 20px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+        }
+
+        .logo {
+            font-size: 32px;
+            font-weight: bold;
+            color: white;
+            letter-spacing: 2px;
+        }
+
+        .logo span {
+            color: #90caf9;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 15px;
+            font-size: 16px;
+            transition: 0.3s;
+        }
+
+        nav a:hover { color: #90caf9; }
+
+        .hero {
+            background: linear-gradient(135deg, #1a237e, #1565c0, #0288d1);
+            color: white;
+            text-align: center;
+            padding: 100px 20px;
+            animation: aparecer 1s ease;
+        }
+
+        .hero h1 {
+            font-size: 52px;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .hero p {
+            font-size: 22px;
+            color: #90caf9;
+            margin-bottom: 40px;
+        }
+
+        .btn-hero {
+            background-color: white;
+            color: #1a237e;
+            padding: 15px 40px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-size: 18px;
+            font-weight: bold;
+            transition: 0.3s;
+            display: inline-block;
+        }
+
+        .btn-hero:hover {
+            transform: scale(1.05);
+            box-shadow: 0 5px 20px rgba(0,0,0,0.3);
+        }
+
+        .secao-titulo {
+            text-align: center;
+            padding: 60px 20px 30px;
+            font-size: 36px;
+            color: #1a237e;
+        }
+
+        .produtos {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 30px;
+            padding: 20px 40px 60px;
+        }
+
+        .card-produto {
+            background: white;
+            border-radius: 20px;
+            width: 280px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            overflow: hidden;
+            transition: 0.3s;
+            animation: subir 0.8s ease;
+        }
+
+        .card-produto:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+        }
+
+        .card-produto img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            background: linear-gradient(135deg, #1565c0, #0288d1);
+        }
+
+        .img-placeholder {
+            width: 100%;
+            height: 200px;
+            background: linear-gradient(135deg, #1565c0, #0288d1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 60px;
+        }
+
+        .info-produto {
+            padding: 20px;
+        }
+
+        .info-produto h3 {
+            font-size: 20px;
+            color: #1a237e;
+            margin-bottom: 8px;
+        }
+
+        .info-produto p {
+            color: #666;
+            font-size: 14px;
+            margin-bottom: 15px;
+        }
+
+        .preco {
+            font-size: 24px;
+            font-weight: bold;
+            color: #1565c0;
+            margin-bottom: 15px;
+        }
+
+        .btn-pedir {
+            display: block;
+            background: linear-gradient(135deg, #1a237e, #1565c0);
+            color: white;
+            text-align: center;
+            padding: 12px;
+            border-radius: 10px;
+            text-decoration: none;
+            font-size: 16px;
+            transition: 0.3s;
+        }
+
+        .btn-pedir:hover {
+            opacity: 0.9;
+            transform: scale(1.02);
+        }
+
+        .sobre {
+            background: linear-gradient(135deg, #1a237e, #1565c0);
+            color: white;
+            text-align: center;
+            padding: 80px 40px;
+        }
+
+        .sobre h2 {
+            font-size: 36px;
+            margin-bottom: 20px;
+        }
+
+        .sobre p {
+            font-size: 18px;
+            color: #90caf9;
+            max-width: 600px;
+            margin: 0 auto 40px;
+            line-height: 1.8;
+        }
+
+        .contato-btn {
+            background: white;
+            color: #1a237e;
+            padding: 15px 40px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-size: 18px;
+            font-weight: bold;
+            transition: 0.3s;
+            display: inline-block;
+        }
+
+        .contato-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 5px 20px rgba(0,0,0,0.3);
+        }
+
+        footer {
+            background: #0d1642;
+            color: #90caf9;
+            text-align: center;
+            padding: 30px;
+            font-size: 14px;
+        }
+
+        .whatsapp-fixo {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: #25d366;
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 30px;
+            text-decoration: none;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            transition: 0.3s;
+            z-index: 999;
+        }
+
+        .whatsapp-fixo:hover {
+            transform: scale(1.1);
+        }
+
+        @keyframes aparecer {
+            from { opacity: 0; transform: translateY(-30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes subir {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @media (max-width: 600px) {
+            .hero h1 { font-size: 32px; }
+            .logo { font-size: 24px; }
+            nav { display: none; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo">DIVINA <span>Óculos</span></div>
+        <nav>
+            <a href="#produtos">Produtos</a>
+            <a href="#sobre">Sobre</a>
+            <a href="#contato">Contato</a>
+        </nav>
+    </header>
+
+    <div class="hero">
+        <h1>✨ Divina Óculos</h1>
+        <p>Estilo e elegância para o seu olhar</p>
+        <a href="#produtos" class="btn-hero">Ver Coleção</a>
+    </div>
+
+    <h2 class="secao-titulo">🕶️ Nossa Coleção</h2>
+
+    <div class="produtos" id="produtos">
+
+        <div class="card-produto">
+            <div class="img-placeholder">🕶️</div>
+            <div class="info-produto">
+                <h3>Óculos Classic Blue</h3>
+                <p>Armação azul elegante, lente UV400, perfeito para o dia a dia.</p>
+                <div class="preco">R$ 89,90</div>
+                <a class="btn-pedir" href="https://wa.me/5593991635000?text=Olá! Gostaria de pedir o Óculos Classic Blue por R$ 89,90" target="_blank">🛒 Pedir pelo WhatsApp</a>
+            </div>
+        </div>
+
+        <div class="card-produto">
+            <div class="img-placeholder">🕶️</div>
+            <div class="info-produto">
+                <h3>Óculos Divina Gold</h3>
+                <p>Armação dourada sofisticada, lente espelhada, estilo fashion.</p>
+                <div class="preco">R$ 129,90</div>
+                <a class="btn-pedir" href="https://wa.me/5593991635000?text=Olá! Gostaria de pedir o Óculos Divina Gold por R$ 129,90" target="_blank">🛒 Pedir pelo WhatsApp</a>
+            </div>
+        </div>
+
+        <div class="card-produto">
+            <div class="img-placeholder">🕶️</div>
+            <div class="info-produto">
+                <h3>Óculos Sunset Rose</h3>
+                <p>Armação rosé delicada, lente degradê, tendência da temporada.</p>
+                <div class="preco">R$ 109,90</div>
+                <a class="btn-pedir" href="https://wa.me/5593991635000?text=Olá! Gostaria de pedir o Óculos Sunset Rose por R$ 109,90" target="_blank">🛒 Pedir pelo WhatsApp</a>
+            </div>
+        </div>
+
+        <div class="card-produto">
+            <div class="img-placeholder">🕶️</div>
+            <div class="info-produto">
+                <h3>Óculos Sport Black</h3>
+                <p>Armação preta esportiva, lente polarizada, ideal para praia.</p>
+                <div class="preco">R$ 99,90</div>
+                <a class="btn-pedir" href="https://wa.me/5593991635000?text=Olá! Gostaria de pedir o Óculos Sport Black por R$ 99,90" target="_blank">🛒 Pedir pelo WhatsApp</a>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="sobre" id="sobre">
+        <h2>Sobre a Divina Óculos</h2>
+        <p>Somos uma marca apaixonada por estilo e qualidade. Nossos óculos são selecionados com cuidado para trazer o melhor em moda e proteção para você.</p>
+        <a class="contato-btn" href="https://wa.me/5593991635000" target="_blank">💬 Fale Conosco</a>
+    </div>
+
+    <footer>
+        <p>© 2026 Divina Óculos — Todos os direitos reservados</p>
+        <p style="margin-top:10px;">Todos os direitos reservados - Edilene Silva</p>
+    </footer>
+
+    <a class="whatsapp-fixo" href="https://wa.me/5593991635000" target="_blank">💬</a>
+
+</body>
+</html>
